@@ -10,7 +10,6 @@ class App extends Component {
   render() {
     const { email, onSubmit, mutEmail } = this.props;
 
-    console.log('props', this.props)
     return (
       <div className="App">
         <div className="App-header">

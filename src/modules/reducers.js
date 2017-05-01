@@ -43,15 +43,14 @@ export default (state = initState, action = {}) => {
 };
 
 export function submit() {
-  return (dispatch, getState) => {
-    return new Promise((resolve) => {
+  return (dispatch, getState) =>
+    new Promise((resolve) => 
       resolve( dispatch({
         type: SUBMIT_EMAIL
-      }) );
-    }).then(() => { 
-      dispatch(submitSuccess(getState().app.email));
-    });
-  }
+      }) )
+    ).then(() => 
+      dispatch(submitSuccess(getState().app.email))
+    );
 }
 
 export function submitSuccess(email) {

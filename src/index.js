@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/app';
 import './index.css';
+import reducer from './modules/reducers';
 
 import { createBrowserHistory } from 'history';
 import { createStore, combineReducers } from 'redux';
@@ -11,8 +12,10 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
 const store = createStore(
   combineReducers({
-    routing: routerReducer
-  })
+    routing: routerReducer,
+    app: reducer
+  }),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 const history = syncHistoryWithStore(createBrowserHistory(), store);
@@ -21,8 +24,6 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <Route path="foo"/>
-        <Route path="bar"/>
       </Route>
     </Router>
   </Provider>,

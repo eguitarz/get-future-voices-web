@@ -39,10 +39,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatcherToProps = (dispatch, ownProps) => ({
   onSubmit() {
-    dispatch(submit(ownProps.email))
+    dispatch(submit());
   },
-  mutEmail(email) {
-    dispatch(mutEmail(email))
+  mutEmail(event) {
+    dispatch(mutEmail(event));
   }
 });
 

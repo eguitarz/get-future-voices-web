@@ -42,17 +42,22 @@ export default (state = initState, action = {}) => {
   }
 };
 
-export function submit(email) {
-  return {
-    type: SUBMIT_EMAIL,
-    data: email
+export function submit() {
+  return (dispatch, getState) => {
+    return new Promise((resolve) => {
+      resolve( dispatch({
+        type: SUBMIT_EMAIL
+      }) );
+    }).then(() => { 
+      dispatch(submitSuccess(getState().app.email));
+    });
   }
 }
 
-export function submitSuccess(data) {
+export function submitSuccess(email) {
   return {
     type: SUBMIT_EMAIL_SUCCESS,
-    data: data.email
+    data: email
   }
 }
 

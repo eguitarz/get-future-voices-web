@@ -5,17 +5,19 @@ import './index.css';
 import reducer from './modules/reducers';
 
 import { createBrowserHistory } from 'history';
-import { createStore, combineReducers } from 'redux';
+import { compose, createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route } from 'react-router';
+import thunk from 'redux-thunk';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers({
     routing: routerReducer,
     app: reducer
   }),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancers( applyMiddleware(thunk) )
 );
 
 const history = syncHistoryWithStore(createBrowserHistory(), store);

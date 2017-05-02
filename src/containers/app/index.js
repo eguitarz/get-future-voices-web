@@ -13,10 +13,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Welcome to React</h2>
+          <h2>Get Future Voice</h2>
         </div>
         <p className="App-intro">
-          Hello World!
+          Subscribe
         </p>
         <EmailInput email={email} onSubmit={onSubmit} mutEmail={mutEmail} />
       </div>

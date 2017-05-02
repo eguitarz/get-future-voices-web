@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/app';
+import './vendor/normalize.css';
 import './vendor/skeleton.css';
 import './index.css';
 import reducer from './modules/reducers';

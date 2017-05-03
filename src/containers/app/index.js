@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import './styles.css';
 
-class App extends Component {
+export class App extends Component {
   render() {
     const { email, onSubmit, mutEmail } = this.props;
 

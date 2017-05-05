@@ -13,6 +13,7 @@ let config = {
 };
 
 firebase.initializeApp(config);
+let database = firebase.database();
 
 const MUT_EMAIL = 'MUT_EMAIL';
 const SUBMIT_EMAIL = 'SUBMIT_EMAIL';
@@ -71,15 +72,19 @@ export default (state = initState, action = {}) => {
   }
 };
 
-export function submit() {
-  return (dispatch, getState) =>
-    new Promise((resolve) => 
-      resolve( dispatch({
-        type: SUBMIT_EMAIL
-      }) )
-    ).then(() => 
-      dispatch(submitSuccess(getState().app.email))
-    );
+export function submit(email) {
+  return (dispatch) => {
+    let newContact = database.ref('contacts').push();
+    return newContact.set({
+      email: email,
+      timestamp: (new Date()).toISOString()
+    }).then(() => dispatch(submitSuccess(email))
+    ).catch(error => dispatch({
+      type: SUBMIT_EMAIL_FAIL,
+      error: error
+    }))
+    ;
+  }
 }
 
 export function submitSuccess(email) {

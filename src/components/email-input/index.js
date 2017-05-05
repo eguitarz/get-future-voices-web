@@ -8,13 +8,14 @@ export default class EmailInput extends Component {
     return (
       <div>
         <input type="email" value={email} onChange={mutEmail} />
-        <button className="btn btn-primary" onClick={email => onSubmit(email)}>Submit</button>
+        <button className="btn btn-primary" onClick={() => onSubmit(email)}>Submit</button>
       </div>
     );
   }
 }
 
-EmailInput.protoTypes = {
+EmailInput.propTypes = {
   email: PropTypes.string,
-  submitting: PropTypes.boolean 
+  submitting: PropTypes.bool,
+  submitted: PropTypes.bool
 }

@@ -29,10 +29,10 @@ export class App extends Component {
   }
 }
 
-App.protoTypes = {
+App.propTypes = {
   email: PropTypes.string,
-  submitting: PropTypes.boolean,
-  submitted: PropTypes.boolean ,
+  submitting: PropTypes.bool,
+  submitted: PropTypes.bool,
   user: PropTypes.object
 }
 
@@ -44,8 +44,8 @@ const mapStateToProps = ({ app }) => ({
 });
 
 const mapDispatcherToProps = (dispatch, ownProps) => ({
-  onSubmit() {
-    dispatch(submit());
+  onSubmit(email) {
+    dispatch(submit(email));
   },
   mutEmail(event) {
     dispatch(mutEmail(event));

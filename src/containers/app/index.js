@@ -8,15 +8,10 @@ import './styles.css';
 
 export class App extends Component {
   render() {
-    const { user, email, onSubmit, mutEmail, onSignIn, onSignOut } = this.props;
+    const { email, onSubmit, mutEmail } = this.props;
 
     return (
       <div className="App">
-        {user ? (
-          <button onClick={onSignOut}>Sign Out</button>
-        ) : (
-          <button onClick={onSignIn}>Sign In</button>
-        )}
         <div className="App-header">
           <h2>Get Future Voice</h2>
         </div>
@@ -32,15 +27,13 @@ export class App extends Component {
 App.propTypes = {
   email: PropTypes.string,
   submitting: PropTypes.bool,
-  submitted: PropTypes.bool,
-  user: PropTypes.object
+  submitted: PropTypes.bool
 }
 
 const mapStateToProps = ({ app }) => ({
   email: app.email,
   submmiting: app.submitting,
-  submmited: app.submitted,
-  user: app.user
+  submmited: app.submitted
 });
 
 const mapDispatcherToProps = (dispatch, ownProps) => ({

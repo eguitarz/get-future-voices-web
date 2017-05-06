@@ -7,7 +7,7 @@ export default class EmailInput extends Component {
     const { email, onSubmit, mutEmail } = this.props;
     return (
       <div>
-        <input type="email" value={email} onChange={mutEmail} />
+        <input type="email" placeholder="email" value={email} onChange={mutEmail} />
         <button className="btn btn-primary" onClick={() => onSubmit(email)}>Submit</button>
       </div>
     );

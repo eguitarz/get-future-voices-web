@@ -8,7 +8,7 @@ import './styles.css';
 
 export class App extends Component {
   render() {
-    const { email, onSubmit, mutEmail } = this.props;
+    const { email, onSubmit, mutEmail, error, submitted } = this.props;
 
     return (
       <div className="App">
@@ -18,7 +18,12 @@ export class App extends Component {
         <p className="App-intro">
           Subscribe
         </p>
-        <EmailInput email={email || ''} onSubmit={onSubmit} mutEmail={mutEmail} />
+        {submitted && !error ? (
+          <div>Success!</div>
+        ) : (
+          <EmailInput email={email || ''} onSubmit={onSubmit} mutEmail={mutEmail} />
+        )}
+        <div className="Subscribe__error">{error && error.code}</div>
       </div>
     );
   }
@@ -31,9 +36,10 @@ App.propTypes = {
 }
 
 const mapStateToProps = ({ app }) => ({
+  error: app.error,
   email: app.email,
-  submmiting: app.submitting,
-  submmited: app.submitted
+  submitting: app.submitting,
+  submitted: app.submitted
 });
 
 const mapDispatcherToProps = (dispatch, ownProps) => ({

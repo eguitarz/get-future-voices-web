@@ -13,16 +13,17 @@ export class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Get Future Voice</h2>
+          <h1>Future Voice</h1>
+          <p>Whisper yourself in the future.</p>
         </div>
-        <p className="App-intro">
-          Subscribe
-        </p>
-        {submitted && !error ? (
-          <div>Success!</div>
-        ) : (
-          <EmailInput email={email || ''} onSubmit={onSubmit} mutEmail={mutEmail} />
-        )}
+        <div className="App-intro">
+          Subscribe to be notified when the app is ready
+          {submitted && !error ? (
+            <div>Success!</div>
+          ) : (
+            <EmailInput email={email || ''} onSubmit={onSubmit} mutEmail={mutEmail} />
+          )}
+        </div>
         <div className="Subscribe__error">{error && error.code}</div>
       </div>
     );
